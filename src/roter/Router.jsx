@@ -1,7 +1,7 @@
 import { Route, Switch } from "react-router-dom"; //このタグの配下でルーティングが有効
 import { Home } from "../Home";
-import { Page2 } from "../Page2";
 import { page1Routes } from "./Page1Routes";
+import { Page2Routes } from "./Page2Routes";
 
 export const Router = () => {
   return (
@@ -47,9 +47,7 @@ export const Router = () => {
       />
 
       {/* pathがpage2の時Page2コンポーネントへ遷移 */}
-      <Route path="/page2">
-        <Page2 />
-      </Route>
+      <Page2Routes />
     </Switch>
   );
 };
