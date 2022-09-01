@@ -1,6 +1,4 @@
 import { Link } from "react-router-dom";
-import { Page1DeatailA } from "./Page1DetailA";
-import { Page1DeatailB } from "./Page1DetailB";
 export const Page1 = () => {
   return (
     <div>

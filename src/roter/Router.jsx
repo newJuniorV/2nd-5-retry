@@ -1,9 +1,7 @@
 import { Route, Switch } from "react-router-dom"; //このタグの配下でルーティングが有効
 import { Home } from "../Home";
-import { Page1 } from "../Page1";
-import { Page1DeatailA } from "../Page1DetailA";
-import { Page1DeatailB } from "../Page1DetailB";
 import { Page2 } from "../Page2";
+import { page1Routes } from "./Page1Routes";
 
 export const Router = () => {
   return (
@@ -11,6 +9,7 @@ export const Router = () => {
       <Route exact path="/">
         <Home />
       </Route>
+
       {/* pathがpage1の時Page1コンポーネントへ遷移 */}
       {/* <Route path="/page1">
       <Page1 />
@@ -22,17 +21,27 @@ export const Router = () => {
         path="/page1"
         render={({ match: { url } }) => (
           <Switch>
-            <Route exact path={url}>
+            {page1Routes.map((route) => (
+              <Route
+                key={route.path}
+                exact={route.exact}
+                path={`${url}${route.path}`}
+              >
+                {route.children}
+              </Route>
+            ))}
+
+            {/* <Route exact path={url}>
               <Page1 />
             </Route>
-            {/* <Route path="/page1/detailA"> 
-              以下に変更*/}
-            <Route path={`${url}/detailA`}>
+            <➀Route path="/page1/detailA"> 
+              以下に変更
+            <➁Route path={`${url}/detailA`}>
               <Page1DeatailA />
             </Route>
             <Route path={`${url}/detailB`}>
               <Page1DeatailB />
-            </Route>
+            </Route> */}
           </Switch>
         )}
       />
